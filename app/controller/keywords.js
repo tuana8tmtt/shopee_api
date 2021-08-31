@@ -5,7 +5,10 @@ module.exports = {
     get_all_keywords: async (req, res, next) => {
         try {
             const results = await Keyword.find({});
-            res.json(results);
+            res.json({
+                id: results.id,
+                keyword: results.keyword,
+            });
         } catch (error) {
             console.log(error.message);
         }
