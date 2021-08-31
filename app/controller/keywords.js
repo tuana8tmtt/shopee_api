@@ -4,11 +4,8 @@ var Product = require('../model/products');
 module.exports = {
     get_all_keywords: async (req, res, next) => {
         try {
-            const results = await Keyword.find({});
-            res.json({
-                id: results.id,
-                keyword: results.keyword,
-            });
+            const results = await Keyword.find({}, 'id keyword');
+            res.json(results);
         } catch (error) {
             console.log(error.message);
         }
