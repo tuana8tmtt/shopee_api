@@ -2,8 +2,6 @@ const db_connect = require('../database/connect');
 const Schema = db_connect.mongoose.Schema;
 
 
-
-
 var keyword_schema = new Schema({
     id: Number,
     keyword: String,
