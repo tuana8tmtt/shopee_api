@@ -5,7 +5,8 @@ var app = express();
 require('./routes/api/keywords')(app);
 require('./routes/api/products')(app);
 
+var port = process.env.PORT || 3000;
 
-app.listen(3000, function () {
+app.listen(port, function () {
     console.log('running port 3000')
 })
