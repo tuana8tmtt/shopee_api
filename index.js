@@ -6,8 +6,8 @@ require('./routes/api/keywords')(app);
 require('./routes/api/products')(app);
 require('./routes/api/user')(app);
 
-var port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
-app.listen(port, function () {
-    console.log('running port 3000')
-})
+app.listen(port, () => {
+    console.log('Express server listening on port', port)
+});
