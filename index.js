@@ -6,8 +6,6 @@ require('./routes/api/keywords')(app);
 require('./routes/api/products')(app);
 require('./routes/api/user')(app);
 
-const port = process.env.PORT || 8080;
-
-app.listen(port, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log('Express server listening on port', port)
 });
