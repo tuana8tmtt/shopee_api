@@ -32,7 +32,7 @@ module.exports = {
         }
     },
     get_detail_product: async (req, res, next) => {
-        const id = req.params.id;
+        const id = req.params.itemid;
         try {
             const results = await Keyword.findOne({ id: id });
             const quantity = await Product.count({ 'keyword': results.keyword })
