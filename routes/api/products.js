@@ -1,5 +1,5 @@
 /*
-route keywords
+route products
 */
 require('dotenv').config()
 
