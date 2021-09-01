@@ -34,14 +34,9 @@ module.exports = {
     get_detail_product: async (req, res, next) => {
         const id = req.params.itemid;
         try {
-            const results = await Keyword.findOne({ id: id });
-            const quantity = await Product.count({ 'keyword': results.keyword })
-            console.log(results.keyword);
-            res.send({
-                id: results.id,
-                keyword: results.keyword,
-                quantity: quantity
-            });
+            const results = await Product.findOne({ itemid: id });
+            console.log(results);
+            res.json(results);
         } catch (error) {
             console.log(error.message);
         }
