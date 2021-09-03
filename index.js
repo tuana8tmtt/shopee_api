@@ -13,6 +13,7 @@ app.use(morgan('combined'));
 require('./routes/api/keywords')(app);
 require('./routes/api/products')(app);
 require('./routes/api/user')(app);
+require('./routes/api/shopping')(app);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Express server listening on port 3000')

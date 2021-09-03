@@ -7,7 +7,11 @@ module.exports = {
                 res.status(400).send('Required query params missing');
             }
             if (/\d/.test(req.query.limit)) {
-                req.query.limit > 100 ? limit_query = 100 : limit_query = Number(req.query.limit);
+                if (req.query.limit > 0) {
+                    req.query.limit > 100 ? limit_query = 100 : limit_query = Number(req.query.limit);
+                } else {
+                    limit_query = 100;
+                }
             } else {
                 limit_query = 100;
             }

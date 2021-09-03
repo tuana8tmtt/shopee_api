@@ -3,10 +3,26 @@ const User = require('../model/user/user');
 module.exports = {
     store_user: async (req, res, next) => {
         try {
-            const user = new User(req.body)
+            data = {
+                name: req.body.name,
+                email: req.body.email,
+                phone: req.body.phone,
+                password: req.body.password,
+                address: req.body.address,
+                follow: ''
+            }
+            const user = new User(data)
             await user.save();
-            const token = await user.generateAuthToken()
-            res.status(201).send({ user, token })
+            const token = await user.generateAuthToken();
+            ({ name, phone, email, phone } = user)
+            user_data = {
+                name: name,
+                phone: phone,
+                email: email,
+                phone: phone,
+                token: token
+            }
+            res.status(201).json({ user_data })
         } catch (error) {
             res.status(400).send(error);
             console.log(error.message);

@@ -32,13 +32,35 @@ var user_schema = new Schema({
         required: true,
         minLength: 6
     },
+    address: {
+        type: String,
+        required: true,
+        minLength: 6
+    },
     tokens: [{
         token: {
             type: String,
             required: true
         }
+    },],
+    shop_follow: [{
+        follow: {
+            type: String,
+            required: false
+        }
+    }, { timestamps: { createdAt: 'created_at' } }],
+    shopping_ids: [{
+        shopping_id: {
+            type: String,
+            required: false
+        },
+        status: {
+            type: Number,
+            required: false
+        }
     }]
-});
+
+}, { timestamps: { createdAt: 'created_at' } });
 user_schema.pre('save', async function (next) {
     // Hash the password before saving the user model
     const user = this
