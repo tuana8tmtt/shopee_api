@@ -1,5 +1,4 @@
-var Product = require('../model/products');
-
+var Product = require('../../model/api/products');
 module.exports = {
     get_products_from_keyword: async (req, res, next) => {
         try {
@@ -44,5 +43,15 @@ module.exports = {
         } catch (error) {
             console.log(error.message);
         }
+    },
+    get_detail_product_from_slug: async (req, res, next) => {
+        const slug = req.params.slug;
+        try {
+            const results = await Product.findOne({ slug: slug });
+            res.json(results)
+        } catch (error) {
+            console.log(error.message);
+        }
     }
+
 }

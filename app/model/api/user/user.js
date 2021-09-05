@@ -1,4 +1,4 @@
-const db_connect = require('../../database/connect');
+const db_connect = require('../../../database/connect');
 const validator = require('validator')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')

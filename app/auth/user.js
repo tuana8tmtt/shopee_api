@@ -1,4 +1,4 @@
-const User = require('../model/user/user');
+const User = require('../model/api/user/user');
 
 module.exports = {
     store_user: async (req, res, next) => {
@@ -49,7 +49,9 @@ module.exports = {
             phone: req.user.phone,
             email: req.user.email,
             id: req.user._id,
-            token: req.token
+            token: req.token,
+            follow: req.user.shop_follow,
+            shopping_ids: req.user.shopping_ids
         }
         res.json(info_user);
     },

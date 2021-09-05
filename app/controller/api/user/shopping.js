@@ -1,7 +1,11 @@
-const Shopping = require('../../model/user/shopping');
-const Products = require('../../model/products')
-const User = require('../../model/user/user')
-
+const Shopping = require('../../../model/api/user/shopping');
+const Products = require('../../../model/api/products')
+const User = require('../../../model/api/user/user')
+const shoppingExists = (shopping_id, arr) => {
+    return arr.some(function (el) {
+        return el.shopping_id === shopping_id;
+    });
+}
 module.exports = {
 
     add_shopping: async (req, res, next) => {
@@ -23,7 +27,6 @@ module.exports = {
                     shopping_id: shopping_info._id,
                     status: 0
                 }
-                console.log(shopping_id);
                 const User_update = User.findOneAndUpdate(
                     { _id: req.user._id },
                     { $push: { shopping_ids: shopping_id } },
@@ -49,6 +52,34 @@ module.exports = {
             res.status(400).send(error);
             console.log(error.message);
         }
+    },
+    info_shopping: async (req, res) => {
+        try {
+            if (req.user.shopping_ids.length > 0) {
+                if (shoppingExists(req.params.shopping_id, req.user.shopping_ids)) {
+                    const Shopping_info = await Shopping.findOne({ _id: req.params.shopping_id });
+                    if (Shopping_info) {
+                        let status_info = req.user.shopping_ids.find(o => o.shopping_id === req.params.shopping_id);
+                        data = {
+                            detail: Shopping_info,
+                            status: status_info.status
+                        }
+                        res.status(201).json(data);
+                    } else {
+                        res.status(404).json({ error: "Not Found" });
+                    }
+                } else {
+                    res.status(404).json({ error: "Not Found" });
+                }
+            } else {
+                res.status(404).json({ error: "Not Found" });
+            }
+        } catch (error) {
+            // console.log(error);
+            res.status(400).send(error);
+        }
+
     }
+
 }
 

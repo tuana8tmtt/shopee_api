@@ -1,5 +1,5 @@
-var Keyword = require('../model/keywords');
-var Product = require('../model/products');
+var Keyword = require('../../model/api/keywords');
+var Product = require('../../model/api/products');
 
 module.exports = {
     get_all_keywords: async (req, res, next) => {

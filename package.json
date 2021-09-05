@@ -2,19 +2,27 @@
   "name": "shopee_api",
   "version": "1.0.0",
   "description": "Products of shopee",
-  "main": "indes.js",
+  "main": "app/indes.js",
   "scripts": {
-    "start": "npx nodemon index.js"
+    "start": "npx nodemon app/index.js",
+    "watch": "node-sass app/resource/scss/app.scss app/public/css/app.css"
   },
   "author": "tuantm",
   "license": "ISC",
   "dependencies": {
+    "arslugify": "^1.0.1",
+    "axios": "^0.21.2",
     "bcrypt": "^5.0.1",
+    "bootstrap-icons": "^1.5.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-handlebars": "^5.3.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.3",
+    "mongoose-slug-generator": "^1.0.4",
+    "mongoose-slug-updater": "^3.3.0",
     "morgan": "^1.10.0",
+    "node-sass": "^6.0.1",
     "nodemon": "^2.0.12",
     "validator": "^13.6.0"
   }
