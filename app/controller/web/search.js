@@ -1,11 +1,12 @@
 const axios = require('axios');
+require('dotenv').config();
 
 module.exports = {
     search: async (req, res, next) => {
         if (!req.query.keyword) {
             res.render('search')
         } else {
-            axios.get('https://shopee-real.herokuapp.com/api/v1.0/products?key_word=' + encodeURI(req.query.keyword) + '&limit=60&newest=0')
+            axios.get(process.env.HOST_NAME + '/api/v1.0/products?key_word=' + encodeURI(req.query.keyword) + '&limit=3&newest=0')
                 .then((response) => {
                     let data = {
                         count: response.data.count,
@@ -13,7 +14,7 @@ module.exports = {
                         keyword: response.data.keyword,
                         title: '"' + response.data.keyword + '" - Khuyến mại tháng 9',
                         items: response.data.items,
-                        current_url: req.header('host'),
+                        current_url: process.env.HOST_NAME,
                     }
                     res.render('search', data)
                 })

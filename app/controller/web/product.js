@@ -1,9 +1,9 @@
 const axios = require('axios');
 var os = require("os");
-
+require('dotenv').config();
 module.exports = {
     get_detail: async (req, res, next) => {
-        let url = 'https://shopee-real.herokuapp.com/api/v1.0/product/' + encodeURI(req.params.slug);
+        let url = process.env.HOST_NAME + '/api/v1.0/product/' + encodeURI(req.params.slug);
         axios.get(url, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -18,7 +18,8 @@ module.exports = {
                     sold: response.data.sold,
                     price_before_discount: response.data.price_before_discount,
                     price: response.data.price,
-                    discount: response.data.discount
+                    discount: response.data.discount,
+                    current_url: process.env.HOST_NAME,
                 }
                 res.render('product', data);
             })
