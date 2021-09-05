@@ -137,10 +137,25 @@ div {
     background-color: #fafafa;
     font-size: 15px;
 }
+.result #result {
+    padding-right: 15px;
+    padding-left: 15px;
+}
 .card:hover{
     background-color: #e4e4e4;
     border-width: 1px 2px 1px 2px;
     border-color: red;
     border-style: solid;
     box-shadow: 0 15px 6px -6px #999;
+}
+.star-icon-search {
+    text-align: center;
+    color:red;
+    height: 10px;
+}
+.navbar-brand {
+    padding-left: 15px;
+}
+.search-form {
+    padding-right: 15px;
 }
