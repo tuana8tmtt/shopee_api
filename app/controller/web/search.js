@@ -5,7 +5,7 @@ module.exports = {
         if (!req.query.keyword) {
             res.render('search')
         } else {
-            axios.get('https://shopee-product.herokuapp.com/api/v1.0/products?key_word=' + encodeURI(req.query.keyword) + '&limit=60&newest=0')
+            axios.get('https://shopee-real.herokuapp.com/api/v1.0/products?key_word=' + encodeURI(req.query.keyword) + '&limit=60&newest=0')
                 .then((response) => {
                     let data = {
                         count: response.data.count,
