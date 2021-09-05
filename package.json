@@ -7,6 +7,9 @@
     "start": "npx nodemon app/index.js",
     "watch": "node-sass app/resource/scss/app.scss app/public/css/app.css"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "author": "tuantm",
   "license": "ISC",
   "dependencies": {
