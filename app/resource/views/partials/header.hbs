@@ -30,14 +30,17 @@
     <div class="container search mt-4 mb-4">
         <div class="row">
             <div class="col-md-3 logo_header d-flex justify-content-center">
-                <img class="logo-img" width="100px" height="50px" src="{{current_url}}/img/logo_header.png" alt="">
+                <a href="{{current_url}}">
+                    <img class="logo-img" width="100px" height="50px" src="{{current_url}}/img/logo_header.png" alt="">
+                </a>
             </div>
             <div class="col-md-9">
                 <div class="search-form">
                     <form action="{{current_url}}/search">
 
                         <div class="input-group">
-
+                            <input hidden="hidden" name="sort" value="newest" type="text"
+                                class="form-control search-input" placeholder="Tìm sản phẩm, thương hiệu, ..">
                             <input name="keyword" value="{{keyword}}" type="text" class="form-control search-input"
                                 placeholder="Tìm sản phẩm, thương hiệu, ..">
                             <div class="input-group-append">
@@ -56,8 +59,30 @@
                         </div>
 
                     </form>
+
+                </div>
+                <div id="keyword">
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    const URL = '{{ current_url }}/api/v1.0/keywords';
+    let main = document.getElementById("result");
+    fetch(URL)
+        .then(response => response.json())
+        .then(data => {
+            for (let i = 0; i < 8; i++) {
+                a = document.createElement('a');
+                a.className = 'key_suggest';
+                a.id = 'key_suggest';
+                a.href = '{{current_url}}/search?sort=newest&keyword=' + data[i].keyword
+                a.innerHTML = data[i].keyword;
+                key = document.getElementById('keyword');
+                key.appendChild(a);
+
+            }
+        });
+
+</script>

@@ -168,10 +168,22 @@ nav {
     color:#ffc107;
     height: 10px;
 }
+.sort {
+    width: 100%;
+}
 .navbar {
     background-color: rgb(216, 98, 19);
     padding: auto;
 }
+.key_suggest {
+    padding-left: 10px;
+    color: black;
+    
+}
+.key_suggest:hover {
+    text-decoration: none;
+}
+
 .carousel-control-next-icon {
     background-color:black
 }
