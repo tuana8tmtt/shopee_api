@@ -24,17 +24,21 @@ module.exports = {
                 var results = await Product.find({ 'name': new RegExp(keyword, "i"), "discount": { $ne: 'null' } })
                     .limit(limit_query)
                     .skip(newest * limit_query);
+                var quantity = await Product.count({ 'name': new RegExp(keyword, "i"), "discount": { $ne: 'null' } })
+
             } else if (req.query.sort == 'hot') {
                 var results = await Product.find({ 'name': new RegExp(keyword, "i") })
                     .limit(limit_query)
                     .sort({ sold: -1 })
                     .skip(newest * limit_query);
+                var quantity = await Product.count({ 'name': new RegExp(keyword, "i") })
             } else {
                 var results = await Product.find({ 'name': new RegExp(keyword, "i") })
                     .limit(limit_query)
                     .skip(newest * limit_query);
+                var quantity = await Product.count({ 'name': new RegExp(keyword, "i") })
             }
-            let quantity = await Product.count({ 'name': new RegExp(keyword, "i") })
+
             res.json({
                 error: null,
                 keyword: keyword,
