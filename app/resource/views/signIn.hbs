@@ -111,9 +111,10 @@
             success: function (response, textStatus, xhr) {
                 document.cookie = "jwt=" + response.token;
                 setTimeout(function () {
+                    $(".login-submit").prop('disabled', false);
+
                     $('#success').css('display', 'block');
                     $('#load').css('display', 'none');
-                    $(".login-submit").prop('disabled', false);
                 }, 1000);
             },
             error: function (response, textStatus, xhr) {
