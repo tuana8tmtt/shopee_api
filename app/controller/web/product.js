@@ -10,6 +10,8 @@ module.exports = {
             }
         })
             .then((response) => {
+                let list_img = JSON.parse(response.data.images.replace(/&quot;/g, '"'));
+                delete list_img[0];
                 let data = {
                     title: response.data.name,
                     img_cover: response.data.image,
@@ -20,6 +22,7 @@ module.exports = {
                     price: response.data.price,
                     discount: response.data.discount,
                     current_url: process.env.HOST_NAME,
+                    images: list_img,
                 }
                 res.render('product', data);
             })

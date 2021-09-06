@@ -47,9 +47,10 @@ require('../routes/api/user')(app);
 require('../routes/api/shopping')(app);
 require('../routes/web/search')(app);
 require('../routes/web/product')(app);
+require('../routes/web/home')(app);
 
 app.get('/', (req, res) => {
-    res.render('home')
+    res.redirect('/home') // res.render('home');
 })
 app.listen(process.env.PORT || 3000, () => {
     console.log('Express server listening on port 3000')
