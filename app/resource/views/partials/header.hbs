@@ -66,7 +66,7 @@
                     </form>
 
                 </div>
-                <div id="keyword">
+                <div id="keyword_suggest">
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
                 a.id = 'key_suggest';
                 a.href = '{{current_url}}/search?sort=newest&keyword=' + data[i].keyword
                 a.innerHTML = jsUcfirst(data[i].keyword);
-                key = document.getElementById('keyword');
+                key = document.getElementById('keyword_suggest');
                 key.appendChild(a);
 
             }
