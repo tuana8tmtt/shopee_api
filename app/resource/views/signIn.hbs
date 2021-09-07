@@ -67,7 +67,7 @@
                                 class="custom-control-label text-sm">Remember me</label> </div> <a href="#"
                             class="ml-auto mb-0 text-sm">Forgot Password?</a>
                     </div>
-                    <div class="row mb-3 px-3"> <button onclick="validate()" id="login" type="submit"
+                    <div class="row mb-3 px-3"> <button id="login" type="submit"
                             class="btn btn-blue login-submit text-center">Login</button>
                     </div>
                     <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a
@@ -80,24 +80,14 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
 
 <script>
-    function validate() {
-        $("#login").validate({
-            rules: {
-                email: { required: true, maxlength: 15 },
-                password: "required",
 
-            },
-            messages: {
-                email: "Vui lòng nhập họ",
-                password: "Vui lòng nhập tên",
-            }
-        });
+
+
+    $("#login").click(function () {
         dataString = {
             email: $("#email").val(),
             password: $("#password").val(),
         }
-    }
-    $("#login").click(function () {
 
         $('#error').css('display', 'none');
         $('#success').css('display', 'none');
@@ -111,12 +101,18 @@
             data: dataString,
             success: function (response, textStatus, xhr) {
                 document.cookie = "jwt=" + response.token;
+
                 setTimeout(function () {
                     $(".login-submit").prop('disabled', false);
 
                     $('#success').css('display', 'block');
                     $('#load').css('display', 'none');
                 }, 1000);
+                setTimeout(function () {
+                    window.location.replace("{{current_url}}/user/profile");
+
+                }, 1000)
+
             },
             error: function (response, textStatus, xhr) {
                 setTimeout(function () {
@@ -128,4 +124,9 @@
 
         });
     });
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
 </script>

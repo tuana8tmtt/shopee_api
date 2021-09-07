@@ -49,6 +49,7 @@ require('../routes/web/search')(app);
 require('../routes/web/product')(app);
 require('../routes/web/home')(app);
 require('../routes/web/signin')(app);
+require('../routes/web/user')(app);
 
 app.get('/', (req, res) => {
     res.redirect('/home') // res.render('home');
