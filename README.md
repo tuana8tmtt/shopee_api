@@ -11,7 +11,7 @@ npm install or yarn install
 ```
 - Run server
 ```
-Npmstart
+Npm start
 ```
 #Detail
 - [ Trả về các keyword phổ biến nhất]GET: https://shopee-product.herokuapp.com/api/v1.0/keywords
